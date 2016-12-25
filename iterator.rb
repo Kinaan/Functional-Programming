@@ -43,4 +43,11 @@ module Iterator
     end
     folded_result
   end
+
+  def self.foreach obj
+    for i in 0..obj.length - 1
+      yield(obj[i])
+    end
+    obj
+  end
 end

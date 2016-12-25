@@ -50,4 +50,13 @@ module Iterator
     end
     obj
   end
+
+  def self.zip obj1, obj2, &block
+    zipped = []
+    block ||= ->(a,b) { [a,b] }
+    for i in 0..obj1.length - 1
+      zipped << block.call(obj1[i], obj2[i])
+    end
+    zipped
+  end
 end

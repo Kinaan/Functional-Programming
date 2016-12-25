@@ -25,4 +25,22 @@ module Iterator
     end
     reduced_result
   end
+
+  def self.fold_left obj, initial_value
+    folded_result = initial_value
+    for i in 0..obj.length - 1
+      folded_result = yield folded_result, obj[i]
+    end
+    folded_result
+  end
+
+  def self.fold_right obj, initial_value
+    folded_result = initial_value
+    i = obj.length - 1
+    while i >= 0
+      folded_result = yield folded_result, obj[i]
+      i -= 1
+    end
+    folded_result
+  end
 end
